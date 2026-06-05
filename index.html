@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!--  SEO / SOCIAL SHARE  — edit the text in the 3 tags below      -->
+  <!-- ============================================================= -->
+  <title>Varun Junnuthula — Software Engineer (Java · Spring Boot · AWS)</title>
+  <meta name="description" content="Varun Junnuthula is a backend-focused Software Engineer building secure, scalable systems with Java, Spring Boot, and AWS. Available for full-time roles and freelance projects." />
+  <meta name="author" content="Varun Junnuthula" />
+
+  <!-- Open Graph (how the link looks when shared on WhatsApp/LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Varun Junnuthula — Software Engineer" />
+  <meta property="og:description" content="Backend-focused Software Engineer · Java · Spring Boot · AWS · Available for hire." />
+
+  <!-- Emoji favicon so there are no extra files to upload -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================= */
+    /*  THEME — change these colours to re-skin the whole site       */
+    /* ============================================================= */
+    :root {
+      --bg:        #0a0e1a;
+      --bg-soft:   #111827;
+      --surface:   #151b2e;
+      --border:    #233048;
+      --text:      #e6edf6;
+      --text-dim:  #9aa7bd;
+      --accent:    #5eead4;   /* teal   */
+      --accent-2:  #818cf8;   /* indigo */
+      --accent-3:  #f0abfc;   /* pink   */
+      --radius:    16px;
+      --maxw:      1120px;
+      --shadow:    0 20px 50px -20px rgba(0,0,0,.6);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; line-height: 1.15; font-weight: 600; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    section { padding: 96px 0; }
+    .wrap { width: min(100% - 44px, var(--maxw)); margin-inline: auto; }
+
+    .grad-text {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2) 55%, var(--accent-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(10,14,26,.72);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, background .3s;
+    }
+    header.scrolled { border-bottom-color: var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .logo { font-family: 'Space Grotesk'; font-weight: 700; font-size: 1.15rem; letter-spacing: .3px; }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { color: var(--text-dim); font-size: .94rem; font-weight: 500; transition: color .2s; position: relative; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      padding: 9px 18px; border-radius: 999px; color: var(--bg) !important;
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      font-weight: 600; transition: transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -8px var(--accent-2); }
+    .burger { display: none; background: none; border: 0; cursor: pointer; width: 30px; height: 24px; position: relative; }
+    .burger span { position: absolute; left: 0; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+    .burger span:nth-child(1){ top: 2px; } .burger span:nth-child(2){ top: 11px; } .burger span:nth-child(3){ top: 20px; }
+    .burger.open span:nth-child(1){ top: 11px; transform: rotate(45deg); }
+    .burger.open span:nth-child(2){ opacity: 0; }
+    .burger.open span:nth-child(3){ top: 11px; transform: rotate(-45deg); }
+
+    /* ---------- HERO ---------- */
+    .hero { position: relative; padding-top: 150px; padding-bottom: 90px; overflow: hidden; }
+    .blob {
+      position: absolute; border-radius: 50%; filter: blur(90px); opacity: .35; z-index: 0;
+      animation: float 14s ease-in-out infinite;
+    }
+    .blob.a { width: 520px; height: 520px; background: var(--accent-2); top: -160px; right: -120px; }
+    .blob.b { width: 420px; height: 420px; background: var(--accent); bottom: -180px; left: -120px; animation-delay: -7s; }
+    @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-32px) } }
+    .hero .wrap { position: relative; z-index: 1; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px; border-radius: 999px;
+      background: rgba(94,234,212,.08); border: 1px solid rgba(94,234,212,.3);
+      color: var(--accent); font-size: .82rem; font-weight: 600; margin-bottom: 26px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%{ box-shadow: 0 0 0 0 rgba(94,234,212,.6) } 70%{ box-shadow: 0 0 0 10px rgba(94,234,212,0) } 100%{ box-shadow: 0 0 0 0 rgba(94,234,212,0) } }
+    .hero h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); font-weight: 700; letter-spacing: -1.5px; }
+    .hero .role { font-size: clamp(1.2rem, 2.6vw, 1.7rem); color: var(--text-dim); font-weight: 500; margin-top: 10px; font-family: 'Space Grotesk'; }
+    .hero p.lead { max-width: 620px; margin-top: 22px; font-size: 1.08rem; color: var(--text-dim); }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 9px; padding: 13px 26px; border-radius: 999px;
+      font-weight: 600; font-size: .96rem; cursor: pointer; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, background .2s, border-color .2s;
+    }
+    .btn-primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: var(--bg); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 34px -12px var(--accent-2); }
+    .btn-ghost { background: transparent; border-color: var(--border); color: var(--text); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
+    .socials { display: flex; gap: 16px; margin-top: 34px; }
+    .socials a {
+      width: 44px; height: 44px; display: grid; place-items: center; border-radius: 12px;
+      border: 1px solid var(--border); color: var(--text-dim); transition: .2s;
+    }
+    .socials a:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-3px); }
+    .stats { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 56px; padding-top: 34px; border-top: 1px solid var(--border); }
+    .stat .num { font-family: 'Space Grotesk'; font-size: 2rem; font-weight: 700; }
+    .stat .lbl { color: var(--text-dim); font-size: .9rem; }
+
+    /* ---------- SECTION HEADINGS ---------- */
+    .eyebrow { color: var(--accent); font-weight: 600; font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; }
+    .sec-title { font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 10px 0 14px; letter-spacing: -.5px; }
+    .sec-intro { color: var(--text-dim); max-width: 620px; }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 50px; align-items: start; }
+    .about-grid p { color: var(--text-dim); margin-bottom: 16px; }
+    .about-grid p strong { color: var(--text); }
+    .facts { display: grid; gap: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; }
+    .fact { display: flex; gap: 12px; align-items: flex-start; font-size: .95rem; }
+    .fact svg { flex: none; margin-top: 3px; color: var(--accent); }
+    .fact span { color: var(--text-dim); } .fact b { color: var(--text); font-weight: 600; }
+
+    /* ---------- SKILLS ---------- */
+    .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 44px; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; transition: transform .25s, border-color .25s; }
+    .skill-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+    .skill-card h3 { font-size: 1.05rem; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+    .skill-card h3 .ic { font-size: 1.3rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; }
+    .chip { padding: 6px 13px; border-radius: 8px; background: var(--bg-soft); border: 1px solid var(--border); font-size: .85rem; color: var(--text-dim); transition: .2s; }
+    .skill-card:hover .chip { border-color: rgba(94,234,212,.25); }
+
+    /* ---------- EXPERIENCE ---------- */
+    .timeline { margin-top: 44px; position: relative; padding-left: 30px; }
+    .timeline::before { content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px; width: 2px; background: linear-gradient(var(--accent), var(--accent-2), transparent); }
+    .tl-item { position: relative; padding-bottom: 40px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before { content: ''; position: absolute; left: -30px; top: 5px; width: 16px; height: 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--accent); }
+    .tl-date { color: var(--accent); font-size: .82rem; font-weight: 600; letter-spacing: .5px; }
+    .tl-item h3 { font-size: 1.2rem; margin: 4px 0 2px; }
+    .tl-item .co { color: var(--text-dim); font-weight: 500; margin-bottom: 10px; }
+    .tl-item ul { list-style: none; display: grid; gap: 7px; }
+    .tl-item li { color: var(--text-dim); font-size: .95rem; padding-left: 20px; position: relative; }
+    .tl-item li::before { content: '▹'; position: absolute; left: 0; color: var(--accent); }
+
+    /* ---------- PROJECTS ---------- */
+    .proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 24px; margin-top: 44px; }
+    .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; transition: transform .25s, border-color .25s, box-shadow .25s; position: relative; overflow: hidden; }
+    .proj-card::after { content: ''; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .proj-card:hover { transform: translateY(-6px); border-color: rgba(94,234,212,.4); box-shadow: var(--shadow); }
+    .proj-card:hover::after { transform: scaleX(1); }
+    .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .proj-icon { font-size: 2rem; }
+    .proj-links { display: flex; gap: 12px; }
+    .proj-links a { color: var(--text-dim); transition: color .2s; }
+    .proj-links a:hover { color: var(--accent); }
+    .proj-card h3 { font-size: 1.25rem; margin-bottom: 8px; }
+    .proj-card p { color: var(--text-dim); font-size: .94rem; flex: 1; margin-bottom: 18px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .proj-tags span { font-size: .78rem; color: var(--accent); background: rgba(94,234,212,.08); padding: 4px 10px; border-radius: 6px; }
+
+    /* ---------- CONTACT ---------- */
+    .contact { text-align: center; }
+    .contact .sec-intro { margin: 0 auto 38px; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 46px; max-width: 720px; margin: 0 auto; text-align: left; }
+    .field { margin-bottom: 18px; }
+    .field label { display: block; font-size: .85rem; color: var(--text-dim); margin-bottom: 7px; font-weight: 500; }
+    .field input, .field textarea {
+      width: 100%; padding: 13px 16px; border-radius: 10px; background: var(--bg-soft);
+      border: 1px solid var(--border); color: var(--text); font-family: inherit; font-size: .95rem; transition: border-color .2s;
+    }
+    .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+    .field textarea { resize: vertical; min-height: 120px; }
+    .contact-card .btn-primary { width: 100%; justify-content: center; }
+    .contact-direct { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px; margin-top: 30px; color: var(--text-dim); font-size: .95rem; }
+    .contact-direct a { display: inline-flex; align-items: center; gap: 8px; transition: color .2s; }
+    .contact-direct a:hover { color: var(--accent); }
+
+    /* ---------- FOOTER ---------- */
+    footer { border-top: 1px solid var(--border); padding: 34px 0; text-align: center; color: var(--text-dim); font-size: .9rem; }
+    footer .logo { font-size: 1rem; margin-bottom: 8px; }
+
+    /* ---------- REVEAL ANIMATION ---------- */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links {
+        position: fixed; inset: 70px 0 auto 0; flex-direction: column; gap: 0; align-items: stretch;
+        background: var(--bg-soft); border-bottom: 1px solid var(--border);
+        max-height: 0; overflow: hidden; transition: max-height .35s ease;
+      }
+      .nav-links.open { max-height: 420px; }
+      .nav-links a { padding: 16px 22px; border-top: 1px solid var(--border); }
+      .nav-links .nav-cta { margin: 14px 22px; text-align: center; }
+      .burger { display: block; }
+    }
+    @media (prefers-reduced-motion: reduce) { *{ animation: none !important; transition: none !important; } .reveal{ opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAV ================= -->
+  <header id="top">
+    <nav class="nav wrap">
+      <a href="#top" class="logo">Varun <span>Junnuthula</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Work</a>
+        <a href="#contact" class="nav-cta">Let's talk</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
+    <div class="wrap">
+      <span class="badge"><span class="dot"></span> Available for full-time roles &amp; freelance work</span>
+      <h1>Hi, I'm Varun <span class="grad-text">Junnuthula</span></h1>
+      <p class="role">Software Engineer — Backend · Java · Spring Boot · AWS</p>
+      <p class="lead">
+        I design and ship secure, scalable backend systems — REST APIs, microservices, cloud
+        infrastructure on AWS, and AI-powered automation. I help teams and clients turn ideas into
+        reliable, production-grade software.
+      </p>
+      <div class="cta-row">
+        <a href="#projects" class="btn btn-primary">View my work →</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <!-- Drop your résumé PDF into this folder as "resume.pdf" and this button just works -->
+        <a href="resume.pdf" class="btn btn-ghost" download>⬇ Résumé</a>
+      </div>
+      <div class="socials">
+        <a href="https://github.com/VarunReddyJunnuthula" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/varun-reddy-junnuthula/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 110-4.2 2.1 2.1 0 010 4.2zm1.8 13H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
+        </a>
+        <a href="mailto:varunjunnuthula7@gmail.com" aria-label="Email" title="Email">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg>
+        </a>
+        <a href="tel:+919666928966" aria-label="Phone" title="Call">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        </a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num grad-text">2.5+</div><div class="lbl">Years building backend systems</div></div>
+        <div class="stat"><div class="num grad-text">3</div><div class="lbl">Engineering roles</div></div>
+        <div class="stat"><div class="num grad-text">AWS</div><div class="lbl">Cloud &amp; DevOps focused</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap reveal">
+      <span class="eyebrow">About</span>
+      <h2 class="sec-title">Engineer who ships reliable software</h2>
+      <div class="about-grid">
+        <div>
+          <p>
+            I'm <strong>Varun Junnuthula</strong>, a Software Engineer based in <strong>Hyderabad, India</strong>
+            with over <strong>2.5 years</strong> of experience building backend services and cloud-native
+            applications. My core stack is <strong>Java 17, Spring Boot 3, and AWS</strong>, with a strong
+            focus on security, performance, and clean architecture.
+          </p>
+          <p>
+            I've worked across product and consulting teams — designing REST APIs and microservices,
+            implementing <strong>OAuth 2.0 / OIDC</strong> authentication, setting up <strong>CI/CD pipelines</strong>,
+            and adding observability so systems are easy to run in production. Recently I've been building
+            <strong>AI-powered automation</strong> with the Claude API, MCP tool orchestration, and RAG pipelines.
+          </p>
+          <p>
+            Whether it's a long-term role or a focused freelance project, I care about writing code that's
+            secure, well-tested, and genuinely useful. <strong>Let's build something solid together.</strong>
+          </p>
+        </div>
+        <div class="facts">
+          <div class="fact"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg><span><b>Location</b><br>Hyderabad, India (remote-friendly)</span></div>
+          <div class="fact"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg><span><b>Focus</b><br>Backend · Cloud · Security · AI automation</span></div>
+          <div class="fact"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span><b>Availability</b><br>Open to full-time &amp; freelance</span></div>
+          <div class="fact"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/></svg><span><b>Best way to reach me</b><br>Email or LinkedIn (see below)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills" style="background:var(--bg-soft)">
+    <div class="wrap reveal">
+      <span class="eyebrow">Skills</span>
+      <h2 class="sec-title">My technical toolkit</h2>
+      <p class="sec-intro">The languages, frameworks, and platforms I use to design and ship production systems.</p>
+      <div class="skill-groups">
+        <div class="skill-card">
+          <h3><span class="ic">⚙️</span> Languages</h3>
+          <div class="chips"><span class="chip">Java 17</span><span class="chip">Python 3</span><span class="chip">JavaScript / TypeScript</span><span class="chip">SQL</span><span class="chip">Bash</span></div>
+        </div>
+        <div class="skill-card">
+          <h3><span class="ic">🧩</span> Frameworks</h3>
+          <div class="chips"><span class="chip">Spring Boot 3</span><span class="chip">Spring Security</span><span class="chip">Spring Data JPA</span><span class="chip">React 18</span><span class="chip">FastAPI</span></div>
+        </div>
+        <div class="skill-card">
+          <h3><span class="ic">☁️</span> Cloud &amp; Infra</h3>
+          <div class="chips"><span class="chip">AWS (EC2 · S3 · RDS)</span><span class="chip">Secrets Manager</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">GitHub Actions CI/CD</span></div>
+        </div>
+        <div class="skill-card">
+          <h3><span class="ic">🗄️</span> Databases</h3>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL / MariaDB</span><span class="chip">Redis</span><span class="chip">Hibernate / JPA</span><span class="chip">Flyway</span></div>
+        </div>
+        <div class="skill-card">
+          <h3><span class="ic">🔐</span> Security</h3>
+          <div class="chips"><span class="chip">OAuth 2.0 / OIDC</span><span class="chip">JWT · JWKS</span><span class="chip">mTLS</span><span class="chip">OWASP Top 10</span></div>
+        </div>
+        <div class="skill-card">
+          <h3><span class="ic">🤖</span> AI &amp; Observability</h3>
+          <div class="chips"><span class="chip">Claude API</span><span class="chip">MCP orchestration</span><span class="chip">RAG · pgvector</span><span class="chip">CloudWatch</span><span class="chip">Grafana · Splunk</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap reveal">
+      <span class="eyebrow">Experience</span>
+      <h2 class="sec-title">Where I've worked</h2>
+      <div class="timeline">
+        <!-- ===== Each <div class="tl-item"> is one job. Copy a block to add more. ===== -->
+        <div class="tl-item">
+          <div class="tl-date">JUN 2025 — PRESENT</div>
+          <h3>Software Engineer — Backend</h3>
+          <div class="co">Zensar Technologies</div>
+          <ul>
+            <li>Build and maintain backend services with Java 17 &amp; Spring Boot 3, focused on secure, scalable REST APIs.</li>
+            <li>Implement authentication and authorization with Spring Security (OAuth 2.0 / OIDC, JWT).</li>
+            <li>Deploy and operate services on AWS with CI/CD, containers, and structured observability.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">NOV 2024 — MAY 2025</div>
+          <h3>Software Engineer</h3>
+          <div class="co">Qualinsys Technologies</div>
+          <ul>
+            <li>Developed microservices and database-backed APIs, integrating PostgreSQL/MySQL with JPA &amp; Flyway.</li>
+            <li>Containerised services with Docker and automated builds &amp; deployments with GitHub Actions.</li>
+          </ul>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">JAN 2024 — OCT 2024</div>
+          <h3>Junior Software Engineer</h3>
+          <div class="co">Chaitra Tech</div>
+          <ul>
+            <li>Built features across the stack with Java, Spring Boot, and React, contributing to production releases.</li>
+            <li>Wrote tests, fixed defects, and supported deployments under senior engineering mentorship.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS / WORK ================= -->
+  <section id="projects" style="background:var(--bg-soft)">
+    <div class="wrap reveal">
+      <span class="eyebrow">Work</span>
+      <h2 class="sec-title">Selected projects</h2>
+      <p class="sec-intro">A few things I've built. Want to see more? <a href="#contact" style="color:var(--accent)">Reach out</a> and I'll walk you through my work.</p>
+      <!-- Projects render from the PROJECTS list in the script at the bottom — add yours there. -->
+      <div class="proj-grid" id="projGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact">
+    <div class="wrap reveal">
+      <span class="eyebrow">Contact</span>
+      <h2 class="sec-title">Let's work together</h2>
+      <p class="sec-intro">Have a role, a project, or an idea? Send me a message and I'll get back to you. Whether it's full-time or freelance — I'd love to hear about it.</p>
+      <div class="contact-card">
+        <!-- Messages POST straight to your Gmail inbox via Web3Forms (no mail app opens).
+             Get a FREE access key at https://web3forms.com (enter your email → copy the key),
+             then paste it into WEB3FORMS_ACCESS_KEY in the script near the bottom of this file. -->
+        <form id="contactForm">
+          <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" required placeholder="Jane Doe" /></div>
+          <div class="field"><label for="cf-email">Your email</label><input id="cf-email" name="email" type="email" required placeholder="jane@company.com" /></div>
+          <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required placeholder="Hi Varun, we'd like to talk about..."></textarea></div>
+          <!-- anti-spam honeypot: hidden from humans, bots tend to fill it -->
+          <input type="checkbox" name="botcheck" id="cf-botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+          <button type="submit" class="btn btn-primary" id="cf-submit">Send message →</button>
+          <p id="cf-status" role="status" aria-live="polite" style="margin-top:14px;font-size:.92rem;display:none"></p>
+        </form>
+      </div>
+      <div class="contact-direct">
+        <a href="mailto:varunjunnuthula7@gmail.com">✉️ varunjunnuthula7@gmail.com</a>
+        <a href="tel:+919666928966">📞 +91 96669 28966</a>
+        <a href="https://www.linkedin.com/in/varun-reddy-junnuthula/" target="_blank" rel="noopener">🔗 LinkedIn</a>
+        <a href="https://github.com/VarunReddyJunnuthula" target="_blank" rel="noopener">💻 GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="wrap">
+      <div class="logo">Varun <span style="color:var(--accent)">Junnuthula</span></div>
+      <div>© <span id="year"></span> Varun Junnuthula</div>
+    </div>
+  </footer>
+
+  <script>
+    /* ============================================================= */
+    /*  YOUR PROJECTS — add / edit entries here.                     */
+    /*  Copy one { ... } block, change the text, done.               */
+    /*  icon: any emoji · link/code: use "#" if you have no URL yet  */
+    /* ============================================================= */
+    const PROJECTS = [
+      {
+        icon: "🔐",
+        title: "Secure Microservices Platform",
+        desc: "A Spring Boot microservices backend with OAuth 2.0 / OIDC auth, JWT validation, and role-based access — deployed on AWS with CI/CD.",
+        tags: ["Java", "Spring Boot", "OAuth2", "AWS"],
+        link: "#",        // live demo URL (or "#")
+        code: "#"         // GitHub repo URL (or "#")
+      },
+      {
+        icon: "🤖",
+        title: "AI Automation with Claude + MCP",
+        desc: "An automation pipeline using the Claude API and MCP tool orchestration to process documents and answer queries over a RAG knowledge base.",
+        tags: ["Python", "Claude API", "RAG", "pgvector"],
+        link: "#",
+        code: "#"
+      },
+      {
+        icon: "⚡",
+        title: "Cloud-Native REST API",
+        desc: "A high-throughput REST API backed by PostgreSQL and Redis, containerised with Docker, with CloudWatch observability and Flyway migrations.",
+        tags: ["Spring Boot", "PostgreSQL", "Redis", "Docker"],
+        link: "#",
+        code: "#"
+      }
+      // ,{ icon:"🚀", title:"Your next project", desc:"...", tags:["..."], link:"#", code:"#" }
+    ];
+
+    /* --- render projects --- */
+    const grid = document.getElementById('projGrid');
+    const linkSvg = '<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>';
+    const codeSvg = '<svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 016 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>';
+    grid.innerHTML = PROJECTS.map(p => `
+      <article class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">${p.icon}</div>
+          <div class="proj-links">
+            ${p.link && p.link !== '#' ? `<a href="${p.link}" target="_blank" rel="noopener" title="Live">${linkSvg}</a>` : ''}
+            ${p.code && p.code !== '#' ? `<a href="${p.code}" target="_blank" rel="noopener" title="Code">${codeSvg}</a>` : ''}
+          </div>
+        </div>
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="proj-tags">${p.tags.map(t => `<span>${t}</span>`).join('')}</div>
+      </article>`).join('');
+
+    /* --- nav: scroll state + mobile toggle --- */
+    const header = document.querySelector('header');
+    const navLinks = document.getElementById('navLinks');
+    const burger = document.getElementById('burger');
+    addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 20));
+    burger.addEventListener('click', () => { burger.classList.toggle('open'); navLinks.classList.toggle('open'); });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); navLinks.classList.remove('open'); }));
+
+    /* --- scroll reveal --- */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* --- contact form -> delivers straight to your inbox via Web3Forms (no mail app opens) --- */
+    const WEB3FORMS_ACCESS_KEY = "62c9e9ef-34ad-4cfe-8003-51d01fca9012"; // Web3Forms key (tied to varunjunnuthula7@gmail.com)
+    const cf = document.getElementById('contactForm');
+    const cfStatus = document.getElementById('cf-status');
+    const cfBtn = document.getElementById('cf-submit');
+    const showStatus = (html, ok) => { cfStatus.style.display='block'; cfStatus.style.color = ok ? 'var(--accent)' : '#f87171'; cfStatus.innerHTML = html; };
+    const DIRECT = '<a href="mailto:varunjunnuthula7@gmail.com" style="color:var(--accent)">varunjunnuthula7@gmail.com</a>';
+    cf.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (document.getElementById('cf-botcheck').checked) return; // bot trap
+      if (WEB3FORMS_ACCESS_KEY === 'YOUR_ACCESS_KEY_HERE') { showStatus('Form not configured yet — add your Web3Forms access key. Meanwhile, email me at ' + DIRECT + '.', false); return; }
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const message = document.getElementById('cf-msg').value.trim();
+      const label = cfBtn.textContent;
+      cfBtn.disabled = true; cfBtn.textContent = 'Sending…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ access_key: WEB3FORMS_ACCESS_KEY, subject: `Portfolio enquiry from ${name}`, from_name: name, name, email, message })
+        });
+        const data = await res.json();
+        if (data.success) { cf.reset(); showStatus(`✓ Thanks, ${name || 'there'}! Your message is in my inbox — I'll reply soon.`, true); }
+        else { showStatus(`Couldn't send (${data.message || 'error'}). Please email me directly at ${DIRECT}.`, false); }
+      } catch (err) {
+        showStatus(`Network error — please email me directly at ${DIRECT}.`, false);
+      } finally { cfBtn.disabled = false; cfBtn.textContent = label; }
+    });
+
+    /* --- footer year --- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
