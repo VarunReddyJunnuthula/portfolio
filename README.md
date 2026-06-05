@@ -2,6 +2,8 @@
 
 Personal portfolio website.
 
+[![Live Site](https://img.shields.io/badge/Live-varun--junnuthula.vercel.app-2dd4bf?style=flat-square)](https://varun-junnuthula.vercel.app)
+
 **Live:** https://varun-junnuthula.vercel.app
 
 A single, dependency-free `index.html` (HTML / CSS / vanilla JS) — no build step.
